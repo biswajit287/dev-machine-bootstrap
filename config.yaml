@@ -1,0 +1,249 @@
+
+# ==========================================
+# SYSTEM METADATA
+# ==========================================
+meta:
+  name: "Dev Machine Bootstrap"
+  version: "1.0.0"
+
+# ==========================================
+# FEATURES (The Master Switches)
+# ==========================================
+# Only tools set to 'true' will be processed by the scripts.
+features:
+  # --- Core System ---
+  brew: true
+  vim: true
+  zsh: true
+  iterm2: true
+  git_identity: true
+
+  # --- Languages & Runtimes ---
+  node: true
+  php: true
+  java: true
+  python: true
+
+  # --- Mobile Development ---
+  android: true
+  android_studio: false
+  flutter: true
+
+  # --- Infrastructure & Cloud ---
+  docker: true
+  aws_cli: true
+  databases: true
+
+  # --- Editors ---
+  vscode: true
+
+  # --- GUI Applications ---
+  tableplus: true
+  postman: true
+  discord: false
+
+# ==========================================
+# SECURITY & IDENTITY (Git/SSH)
+# ==========================================
+security:
+  git:
+    name: "Your Name"
+    email: "your.email@example.com"
+    default_branch: "main"
+  ssh:
+    generate_new: true
+    type: "ed25519"
+
+# ==========================================
+# 3. LANGUAGES & RUNTIMES
+# ==========================================
+languages:
+  node:
+    version: "lts/*"
+    package_manager: "nvm"
+  php:
+    version: "8.3"
+    composer: true
+  java:
+    version: "21"
+    vendor: "temurin"
+  python:
+    version: "3"
+
+# ==========================================
+# MOBILE DEVELOPMENT
+# ==========================================
+mobile:
+  android:
+    path: "~/android-sdk"
+    components:
+      - "platform-tools"
+      - "platforms;android-36"
+      - "build-tools;36.0.0"
+      - "emulator"
+  flutter:
+    path: "~/flutter"
+    version: "stable"
+  apple:
+    xcode_ide: true
+
+# ==========================================
+# INFRASTRUCTURE & DBs
+# ==========================================
+infrastructure:
+  docker:
+    install_desktop: true
+  aws:
+    region: "us-east-1"
+  databases:
+    postgresql: true
+    mysql: false
+    redis: true
+
+# ==========================================
+# SHELL & TERMINAL (ZSH)
+# ==========================================
+terminal:
+  shell: "zsh"
+  oh_my_zsh: true
+  theme: "powerlevel10k"
+  plugins:
+    - git
+    - docker
+    - history
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
+  aliases:
+    # --- Navigation & Basics ---
+    ".." : "cd .."
+    "..." : "cd ../.."
+    "-": "cd -"
+    "b": "cd - && ll"
+    "ll" : "ls -lah"
+    "c" : "clear"
+    # Opens current folder in Finder (Mac)
+    "f": "open ."
+
+    # --- Git Workflow ---
+    gs: "git status"
+    ga: "git add ."
+    gc: "git commit -m"
+    gp: "git push"
+    gl: "git log --oneline --graph --decorate"
+    gco: "git checkout"
+    gb: "git branch"
+    gcb: "git checkout -b"
+    gprune: "git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D"
+
+
+    # --- Docker ---
+    d: "docker"
+    dc: "docker compose"
+    dcu: "docker compose up -d"
+    dcd: "docker compose down"
+    dps: "docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'"
+    # Nukes unused containers/images
+    dclean: "docker system prune -af" 
+    dimages: "docker images --format 'table {{.Repository}}\t{{.Tag}}\t{{.Size}}'"
+    # Tail logs of a container
+    dlogs: "docker logs -f"
+    # Exec into a running container
+    dexec: "docker exec -it"
+
+    # --- Frontend (Node/NPM) ---
+    ni: "npm install"
+    nrd: "npm run dev"
+    nrb: "npm run build"
+    nrs: "npm run start"
+    watch: "npm run watch"
+
+    # --- System & Network ---
+    # Get public IP quickly
+    myip: "curl ifconfig.me" 
+    # See what is running on which port
+    ports: "lsof -iTCP -sTCP:LISTEN -P" 
+    # Clear DNS
+    flush: "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+# ==========================================
+# EDITORS & APPS (GUI Tools)
+# ==========================================
+editors:
+  vscode:
+    install_app: true
+    install_extensions: true
+    extensions:
+      # ==============================
+      # TypeScript / JavaScript (Core)
+      # ==============================
+      - dbaeumer.vscode-eslint
+      - esbenp.prettier-vscode
+      - christian-kohler.path-intellisense
+      - christian-kohler.npm-intellisense
+
+      # ==============================
+      # PHP (Core)
+      # ==============================
+      - bmewburn.vscode-intelephense-client
+      - xdebug.php-debug
+
+      # ==============================
+      # Laravel (MOST IMPORTANT)
+      # ==============================
+      - laravel.vscode-laravel
+      - onecentlin.laravel-blade
+      - amiralizadeh9480.laravel-extra-intellisense
+      - ryannaddy.laravel-artisan
+
+      # ==============================
+      # Docker / Infra
+      # ==============================
+      - ms-azuretools.vscode-docker
+      - redhat.vscode-yaml
+
+      # ==============================
+      # Flutter / Dart
+      # ==============================
+      - dart-code.dart-code
+      - dart-code.flutter
+
+      # ==============================
+      # Database / SQL
+      # ==============================
+      - mtxr.sqltools
+      - mtxr.sqltools-driver-pg
+      - mtxr.sqltools-driver-mysql
+
+      # ==============================
+      # Git (Essential)
+      # ==============================
+      - eamodio.gitlens
+
+      # ==============================
+      # Cloud (AWS – if applicable)
+      # ==============================
+      - amazonwebservices.aws-toolkit-vscode
+
+      # ==============================
+      # General Developer Utilities
+      # ==============================
+      # Convert text between camelCase, snake_case, PascalCase
+      - wmaurer.change-case
+
+      # Spell checking for code/comments
+      - streetsidesoftware.code-spell-checker
+      # Bookmarks for navigation
+      - alefragnani.bookmarks
+
+      # Run code snippets in multiple languages
+      - formulahendry.code-runner
+
+      # Highlights TODOs, FIXMEs, NOTES
+      - gruntfuggly.todo-tree
+
+# Generic apps that only need a brew install/cask command
+apps:
+  - tableplus
+  - postman
+  - slack
+  - discord
