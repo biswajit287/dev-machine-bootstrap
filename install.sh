@@ -32,7 +32,7 @@ source ./modules/core.sh && run_core_module
 source ./modules/terminal.sh && run_terminal_module
 
 # Security & Identity Layer
-source ./modules/helpers/ssh.sh && install_ssh_keys
+source ./modules/identity.sh && run_identity_module
 
 # Editors Layer
 source ./modules/editors.sh && run_editors_module

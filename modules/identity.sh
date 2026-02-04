@@ -5,7 +5,8 @@ source ./modules/helpers/ssh.sh
 run_identity_module() {
   log_info "--- Category: Identity & Security ---"
 
-  if config_enabled "git_identity"; then
+  # Configure Git identity
+  if config_enabled "features.git_identity"; then
     local git_name
     git_name=$(read_conf ".security.git.name")
     local git_email
