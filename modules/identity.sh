@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./modules/helpers/ssh.sh
+
 run_identity_module() {
   log_info "--- Category: Identity & Security ---"
 
@@ -22,4 +24,7 @@ run_identity_module() {
 
     log_success "Git identity updated."
   fi
+
+  # Install SSH keys
+  install_ssh_keys
 }

@@ -31,6 +31,9 @@ source ./modules/core.sh && run_core_module
 # Terminal & Shell Layer
 source ./modules/terminal.sh && run_terminal_module
 
+# Security & Identity Layer
+source ./modules/helpers/ssh.sh && install_ssh_keys
+
 # Editors Layer
 source ./modules/editors.sh && run_editors_module
 
