@@ -186,6 +186,8 @@ editors:
       # ==============================
       - bmewburn.vscode-intelephense-client
       - xdebug.php-debug
+      - devsense.phptools-vscode
+      - devsense.profiler-php-vscode
 
       # ==============================
       # Laravel (MOST IMPORTANT)
@@ -206,6 +208,7 @@ editors:
       # ==============================
       - dart-code.dart-code
       - dart-code.flutter
+      - alexisvt.flutter-snippets
 
       # ==============================
       # Database / SQL
@@ -218,11 +221,27 @@ editors:
       # Git (Essential)
       # ==============================
       - eamodio.gitlens
+      - github.copilot-chat
 
       # ==============================
       # Cloud (AWS – if applicable)
       # ==============================
       - amazonwebservices.aws-toolkit-vscode
+
+      # ==============================
+      # Python (if applicable)
+      # ==============================
+      - ms-python.python
+      - ms-python.vscode-pylance
+      - ms-python.debugpy
+      - ms-python.vscode-python-envs
+
+      # ==============================
+      # Bash
+      # ==============================
+      - timonwong.shellcheck
+      - foxundermoon.shell-format
+      - mkhl.shfmt
 
       # ==============================
       # General Developer Utilities
